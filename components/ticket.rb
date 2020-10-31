@@ -1,11 +1,16 @@
 class Ticket < Component
 
-  def initialize()
+  def initialize(params)
+    super
+
     # TODO.
+    
   end
 
-  def render()
-    'TODO'
+  def render(props)
+
+    ""
+
   end
 
 end

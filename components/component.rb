@@ -1,14 +1,15 @@
-class Component
+class Component < Sinatra::Base
 
   ##
-  # All components set state.
+  # All components have state and params.
   ##
-  def initialize()
+  def initialize(params = nil)
+    @params = params
     @state = {}
   end
 
   ##
-  # All components render state and properties.
+  # All components render HTML.
   #
   # @param props [Hash] Read-only properties from the parent component.
   # @return [String] HTML result.

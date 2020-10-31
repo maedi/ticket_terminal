@@ -1,6 +1,6 @@
 class Cart < Component
 
-  def render()
+  def render(props)
     'TODO'
   end
 

@@ -1,10 +1,13 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-require 'json'
 
 class App < Sinatra::Base
 
-  # Load components.
+  ##
+  # CONFIGURATION
+  ##
+
+  # Load components and helpers.
   set :root, File.dirname(__FILE__)
   require File.join(root, '/autoloader.rb')
 
@@ -13,9 +16,13 @@ class App < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  ##
+  # ROUTES
+  ##
+
   # List all tickets.
   get '/' do
-    tickets = Tickets.new()
+    tickets = Tickets.new(params)
     tickets.render()
   end
 
@@ -26,7 +33,7 @@ class App < Sinatra::Base
 
   # List tickets in cart.
   get '/cart' do
-    cart = Cart.new()
+    cart = Cart.new(params)
     cart.render()
   end
 
@@ -35,6 +42,10 @@ class App < Sinatra::Base
   # Apply promotional discounts.
 
   # Calculate and display the total cost.
+
+  ##
+  # SERVER
+  ##
 
   # Start server.
   run! if app_file == $0
