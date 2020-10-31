@@ -6,5 +6,5 @@ A terminal to buy train tickets.
 
 ```
 bundle install
-ruby ticket_terminal.rb
+ruby app.rb
 ```
