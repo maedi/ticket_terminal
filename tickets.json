@@ -1,0 +1,22 @@
+[
+  {
+    "uuid": 1411,
+    "name": "New York to Boston",
+    "price": "15.39"
+  },
+  {
+    "uuid": 23881,
+    "name": "Boston to Chicago",
+    "price": "65.95"
+  },
+  {
+    "uuid": 13008,
+    "name": "Chicago to Utah",
+    "price": "92.00"
+  },
+  {
+    "uuid": 9101,
+    "name": "Utah to Los Angeles",
+    "price": "31.22"
+  }
+]

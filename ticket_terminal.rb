@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'json'
 
 class TicketTerminal < Sinatra::Base
 
@@ -7,10 +8,15 @@ class TicketTerminal < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  # Load a list of products from a file.
-
+  # List all tickets.
   get '/' do
-    'Hello world!'
+
+    # Load ticket data.
+    tickets_file = File.read('./tickets.json')
+    tickets_data = JSON.parse(tickets_file)
+
+    return 'TODO'
+
   end
 
   # List product details to the user.
@@ -20,5 +26,9 @@ class TicketTerminal < Sinatra::Base
   # Apply promotional discounts.
 
   # Calculate and display the total cost.
+
+
+  # Start server.
+  run! if app_file == $0
 
 end
