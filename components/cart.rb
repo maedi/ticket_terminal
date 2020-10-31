@@ -1,7 +1,7 @@
-class Cart
+class Cart < Component
 
-  def render
-    # TODO.
+  def render()
+    'TODO'
   end
 
 end

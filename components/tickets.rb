@@ -1,10 +1,15 @@
-class Tickets
+class Tickets < Component
 
-  def render
+  def initialize
+    super
 
     # Load ticket data.
     tickets_file = File.read('./tickets.json')
-    tickets_data = JSON.parse(tickets_file)
+    @state[:tickets] = JSON.parse(tickets_file)
+
+  end
+
+  def render
 
     return 'TODO'
 
