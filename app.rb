@@ -44,10 +44,18 @@ class App < Sinatra::Base
   # ROUTES
   ##
 
-  # List all tickets.
-  get '/' do
+  # Home.
+  get ['/', '/tickets'] do
+
+    # List available tickets and cart.
     tickets = Tickets.new(params)
-    tickets.render({tickets: @@db[:tickets]})
+    cart = Cart.new(params)
+
+    return [
+      tickets.render({tickets: @@db[:tickets]}),
+      cart.render()
+    ]
+
   end
 
   # Show ticket.

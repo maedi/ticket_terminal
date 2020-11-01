@@ -1,5 +1,7 @@
 <div id="ticket">
+
   <h2><%= ticket[:name] %></h2>
+
   <div class="price"><strong>Price:</strong> $<%= ticket[:price] %></div>
 
   <form method="post" action="/tickets/<%= ticket_id %>/add">
