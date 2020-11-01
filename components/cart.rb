@@ -43,7 +43,7 @@ class Cart < Component
     if discount > 0
       @state[:tickets].each do |ticket|
         new_price = Monetize.parse(ticket[:price]).cents * (1 - discount)
-        ticket[:price] = Money.new(new_price, "USD").format
+        ticket[:final_price] = Money.new(new_price, "USD").format
       end
       @state[:total] = @state[:total] * (1 - discount)
       @state[:message] = "Discount applied: #{discount_percentage} off on total greater than $#{threshold}."
