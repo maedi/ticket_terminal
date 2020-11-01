@@ -1,7 +1,10 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sass/plugin/rack'
 
 class App < Sinatra::Base
+
+  use Sass::Plugin::Rack
 
   ##
   # SETUP
@@ -83,7 +86,7 @@ class App < Sinatra::Base
 
     cart = Cart.new(params)
     cart.render()
-    
+
   end
 
   # Apply promotional discounts.

@@ -9,6 +9,7 @@ gem "sinatra-contrib"
 gem "json"
 gem "money"
 gem "monetize"
+gem "sass"
 
 group :test do
   gem "rspec"

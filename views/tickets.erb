@@ -1,12 +1,16 @@
-<ul class="tickets">
+<div id="tickets">
 
-  <% tickets.each do |uuid, ticket| %>
-    <li>
-      <a href="/tickets/<%= uuid %>">
-        <span class="name"><%= ticket[:name] %></span>
-        <span class="price">$<%= ticket[:final_price] %></span>
-      </a>
-    </li>
-  <% end %>
+  <ul class="tickets--list">
 
-</ul>
+    <% tickets.each do |uuid, ticket| %>
+      <li>
+        <a href="/tickets/<%= uuid %>">
+          <span class="name"><%= ticket[:name] %></span>
+          <span class="price">$<%= ticket[:price] %></span>
+        </a>
+      </li>
+    <% end %>
+
+  </ul>
+
+</div>

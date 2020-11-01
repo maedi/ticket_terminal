@@ -1,0 +1,13 @@
+#cart {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #EFEFEF; }
+  #cart .items {
+    line-height: 2rem; }
+  #cart .empty p {
+    margin: 0; }
+  #cart .total {
+    margin-top: 1rem;
+    font-size: 1.25rem; }
+
+/*# sourceMappingURL=cart.css.map */

@@ -1,0 +1,20 @@
+#tickets {
+  border: 1px solid #EFEFEF;
+  padding: 1rem; }
+
+ul.tickets--list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0; }
+  ul.tickets--list li a {
+    display: block;
+    padding: 1rem;
+    color: #C6C300;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none; }
+    ul.tickets--list li a:hover {
+      background: #EFEFEF;
+      color: #D04700; }
+
+/*# sourceMappingURL=tickets.css.map */

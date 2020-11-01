@@ -1,0 +1,24 @@
+#ticket {
+  border: 1px solid #EFEFEF;
+  padding: 1rem;
+}
+
+.actions {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  .button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.25rem;
+    &:hover {
+      cursor: pointer;
+      background: #C930C7;
+    }
+  }
+  .add {
+    background: #30C94E;
+  }
+}

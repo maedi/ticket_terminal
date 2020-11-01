@@ -2,21 +2,26 @@
 
   <h2>Cart</h2>
 
-  <ul class="cart--tickets">
+  <ul class="items">
     <% tickets.each do |ticket| %>
       <li>
         <span class="name"><%= ticket[:name] %></span>
-        <span class="price">$<%= ticket[:final_price] %></span>
+        <% if discount_applied %>
+          <span class="striked-price"><strike>$<%= ticket[:price] %></strike></span>
+          <span class="discount-price"><%= ticket[:discount_price] %></span>
+        <% else %>
+          <span class="price">$<%= ticket[:price] %></span>
+        <% end %>
       </li>
     <% end %>
   </ul>
 
-  <div class="total">
-    <strong>Total:</strong> <%= total %>
-  </div>
-
   <div class="message">
     <%= message %>
+  </div>
+
+  <div class="total">
+    <strong>Total:</strong> <%= total %>
   </div>
 
 </div>
