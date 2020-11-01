@@ -7,7 +7,6 @@ class Ticket < Component
 
     # Build ticket.
     @state[:ticket_id] = ticket_id
-
     if @@db[:tickets].key? ticket_id
       @state[:ticket] = @@db[:tickets][ticket_id]
     end

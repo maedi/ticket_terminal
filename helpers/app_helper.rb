@@ -26,8 +26,7 @@ module AppHelper
       tickets_data.each do |ticket|
         db[:tickets][ticket['uuid']] = {
           :name => ticket['name'],
-          :price => ticket['price'],
-          :final_price => ticket['price']
+          :price => ticket['price']
         }
       end
 
