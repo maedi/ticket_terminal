@@ -3,11 +3,14 @@ require 'monetize'
 
 # @see https://github.com/RubyMoney/money/issues/593
 I18n.enforce_available_locales = false
+Money.locale_backend = :i18n
 
 class Cart < Component
 
   def initialize(params)
     super
+
+    @state[:message] = nil
 
     # Get cart from session.
     unless @@session.key? "cart"
@@ -30,6 +33,22 @@ class Cart < Component
       end
     end
 
+    # Determine discount.
+    discounter = Discounter.new(params)
+    discount = discounter.get_discount(@state[:total])
+    discount_percentage = (discount * 100).to_i.to_s + "%"
+    threshold = discounter.get_threshold(discount)
+
+    # Apply discount.
+    if discount > 0
+      @state[:tickets].each do |ticket|
+        new_price = Monetize.parse(ticket[:price]).cents * (1 - discount)
+        ticket[:price] = Money.new(new_price, "USD").format
+      end
+      @state[:total] = @state[:total] * (1 - discount)
+      @state[:message] = "Discount applied: #{discount_percentage} off on total greater than $#{threshold}."
+    end
+
   end
 
   # Add a ticket to the cart.
@@ -43,7 +62,8 @@ class Cart < Component
     unless @cart.empty?
       return @@app.erb :cart, :layout => nil, :locals => {
         :total => Money.new(@state[:total], "USD").format,
-        :tickets => @state[:tickets]
+        :tickets => @state[:tickets],
+        :message => @state[:message]
       }
     else
       return "Cart currently empty."
