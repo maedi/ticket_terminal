@@ -2,6 +2,10 @@
 
 A terminal to buy train tickets.
 
+<p align="center">
+  <img src="./assets/screenshot.png" raw=true style="margin-left: auto; margin-right: auto;"/>
+</p>
+
 ## Setup
 
 Run:
