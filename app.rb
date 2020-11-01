@@ -74,7 +74,7 @@ class App < Sinatra::Base
     cart = Cart.new(params)
     cart.add(ticket_id)
 
-    redirect to("/tickets/#{ticket_id}")
+    redirect to("/")
 
   end
 

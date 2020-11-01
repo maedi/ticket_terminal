@@ -15,7 +15,7 @@ class Cart < Component
     end
     @cart = @@session["cart"]
 
-    # List and total tickets in cart.
+    # Get tickets in cart and their total.
     @state[:total] = 0
     @state[:tickets] = []
 
@@ -39,6 +39,7 @@ class Cart < Component
 
   def render()
 
+    # List and show total of tickets in cart.
     unless @cart.empty?
       return @@app.erb :cart, :layout => nil, :locals => {
         :total => Money.new(@state[:total], "USD").format,

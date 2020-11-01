@@ -2,6 +2,15 @@
 
   <h2>Cart</h2>
 
+  <ul class="cart--tickets">
+    <% tickets.each do |ticket| %>
+      <li>
+        <span class="name"><%= ticket[:name] %></span>
+        <span class="price">$<%= ticket[:price] %></span>
+      </li>
+    <% end %>
+  </ul>
+
   <div class="total">
     <strong>Total:</strong> <%= total %>
   </div>
