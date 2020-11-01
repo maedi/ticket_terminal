@@ -4,6 +4,11 @@
   border: 1px solid #EFEFEF; }
   #cart .items {
     line-height: 2rem; }
+  #cart .striked-price {
+    opacity: .75;
+    text-decoration: line-through; }
+  #cart .discount-price {
+    color: #30C94E; }
   #cart .empty p {
     margin: 0; }
   #cart .total {

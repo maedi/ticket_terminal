@@ -5,6 +5,13 @@
   .items {
     line-height: 2rem;
   }
+  .striked-price {
+    opacity: .75;
+    text-decoration: line-through;
+  }
+  .discount-price {
+    color: #30C94E;
+  }
   .empty {
     p {
       margin: 0;

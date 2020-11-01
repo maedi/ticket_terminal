@@ -7,7 +7,7 @@
       <li>
         <span class="name"><%= ticket[:name] %></span>
         <% if discount_applied %>
-          <span class="striked-price"><strike>$<%= ticket[:price] %></strike></span>
+          <span class="striked-price">$<%= ticket[:price] %></span>
           <span class="discount-price"><%= ticket[:discount_price] %></span>
         <% else %>
           <span class="price">$<%= ticket[:price] %></span>

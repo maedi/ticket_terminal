@@ -5,7 +5,7 @@
     <% tickets.each do |uuid, ticket| %>
       <li>
         <a href="/tickets/<%= uuid %>">
-          <span class="name"><%= ticket[:name] %></span>
+          <span class="name"><%= ticket[:name] %></span> - 
           <span class="price">$<%= ticket[:price] %></span>
         </a>
       </li>
