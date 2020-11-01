@@ -9,10 +9,10 @@ RSpec.describe 'Terminal Ticket' do
     App
   end
 
-  it "lists tickets" do
-    get '/'
+  it "show ticket" do
+    get '/tickets/1411'
     expect(last_response).to be_ok
-    expect(last_response.body).to match(/<li>/)
+    expect(last_response.body).to include("$")
   end
 
 end
