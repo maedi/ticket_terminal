@@ -1,15 +1,24 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require_relative 'helpers/app_helper.rb'
 
 class App < Sinatra::Base
+
+  include AppHelper
 
   ##
   # CONFIGURATION
   ##
 
+  @@root = Dir.pwd
+
+  # Expose app to components.
+  before do
+    set_app(self)
+  end
+
   # Load components and helpers.
-  set :root, File.dirname(__FILE__)
-  require File.join(root, '/autoloader.rb')
+  require File.join(@@root, '/autoloader.rb')
 
   # Configure reloader.
   configure :development do

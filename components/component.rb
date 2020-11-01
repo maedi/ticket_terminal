@@ -1,4 +1,8 @@
-class Component < Sinatra::Base
+require_relative '../helpers/app_helper.rb'
+
+class Component
+
+  include AppHelper
 
   ##
   # All components have state and params.
