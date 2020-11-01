@@ -3,18 +3,9 @@ require 'json'
 
 class Tickets < Component
 
-  def initialize(params)
-    super
+  def render(props)
 
-    # Load ticket data.
-    tickets_file = File.read(File.join(@@root, 'tickets.json'))
-    @state[:tickets] = JSON.parse(tickets_file)
-
-  end
-
-  def render()
-
-    @@app.erb :tickets, :locals => { :tickets => @state[:tickets] }
+    @@app.erb :tickets, :locals => { :tickets => props[:tickets] }
 
   end
 

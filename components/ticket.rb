@@ -3,11 +3,11 @@ class Ticket < Component
   def initialize(params)
     super
 
-    # TODO.
-    
+    p params
+
   end
 
-  def render(props)
+  def render()
 
     ""
 

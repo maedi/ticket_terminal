@@ -1,24 +1,32 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-require_relative 'helpers/app_helper.rb'
 
 class App < Sinatra::Base
 
+  ##
+  # SETUP
+  ##
+
+  root = Dir.pwd
+
+  # Load components and helpers.
+  require File.join(root, '/autoloader.rb')
   include AppHelper
+
+  # Expose app to components.
+  before do
+    AppHelper::set_app(self)
+  end
+
+  # Expose root directory to components.
+  @@root = root
+
+  # Setup database.
+  @@db = AppHelper::load_db(@@root)
 
   ##
   # CONFIGURATION
   ##
-
-  @@root = Dir.pwd
-
-  # Expose app to components.
-  before do
-    set_app(self)
-  end
-
-  # Load components and helpers.
-  require File.join(@@root, '/autoloader.rb')
 
   # Configure reloader.
   configure :development do
@@ -32,12 +40,13 @@ class App < Sinatra::Base
   # List all tickets.
   get '/' do
     tickets = Tickets.new(params)
-    tickets.render()
+    tickets.render({tickets: @@db[:tickets]})
   end
 
   # Show ticket.
   get '/tickets/:ticket_id' do
-    # TODO.
+    ticket = Ticket.new(params)
+    ticket.render()
   end
 
   # List tickets in cart.
