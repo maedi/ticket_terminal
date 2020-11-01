@@ -16,7 +16,7 @@ module AppHelper
   def self.load_db(root)
     @@db ||= begin
 
-      tickets_file = File.read(File.join(root, 'tickets.json'))
+      tickets_file = File.read(File.join(root, 'data/tickets.json'))
       tickets_data = JSON.parse(tickets_file)
 
       db = {

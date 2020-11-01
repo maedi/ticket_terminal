@@ -80,8 +80,10 @@ class App < Sinatra::Base
 
   # List tickets in cart.
   get '/cart' do
+
     cart = Cart.new(params)
     cart.render()
+    
   end
 
   # Apply promotional discounts.
