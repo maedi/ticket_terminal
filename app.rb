@@ -48,22 +48,8 @@ class App < Sinatra::Base
   # Show ticket.
   get '/tickets/:ticket_id' do
 
-    # Get ticket.
     ticket = Ticket.new(params)
-    ticket_id = params[:ticket_id].to_i
-
-    if @@db[:tickets].key? ticket_id
-      ticket_props = @@db[:tickets][ticket_id]
-    end
-
-    # Build ticket.
-    props = {
-      :ticket_id => ticket_id,
-      :ticket => ticket_props
-    }
-
-    # Render ticket.
-    ticket.render(props)
+    ticket.render()
 
   end
 
