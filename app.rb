@@ -13,16 +13,18 @@ class App < Sinatra::Base
   require File.join(root, '/autoloader.rb')
   include AppHelper
 
-  # Expose app to components.
-  before do
-    AppHelper::set_app(self)
-  end
-
   # Expose root directory to components.
   @@root = root
 
-  # Setup database.
-  @@db = AppHelper::load_db(@@root)
+  before do
+
+    # Expose app to components.
+    AppHelper::set_app(self)
+
+    # Setup database.
+    AppHelper::load_db(@@root)
+
+  end
 
   ##
   # CONFIGURATION
@@ -45,8 +47,24 @@ class App < Sinatra::Base
 
   # Show ticket.
   get '/tickets/:ticket_id' do
+
+    # Get ticket.
     ticket = Ticket.new(params)
-    ticket.render()
+    ticket_id = params[:ticket_id].to_i
+
+    if @@db[:tickets].key? ticket_id
+      ticket_props = @@db[:tickets][ticket_id]
+    end
+
+    # Build ticket.
+    props = {
+      :ticket_id => ticket_id,
+      :ticket => ticket_props
+    }
+
+    # Render ticket.
+    ticket.render(props)
+
   end
 
   # List tickets in cart.

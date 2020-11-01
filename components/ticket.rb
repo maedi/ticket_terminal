@@ -7,9 +7,12 @@ class Ticket < Component
 
   end
 
-  def render()
+  def render(props)
 
-    ""
+    @@app.erb :ticket, :locals => {
+      :ticket_id => props[:ticket_id],
+      :ticket => props[:ticket]
+    }
 
   end
 
