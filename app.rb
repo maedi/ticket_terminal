@@ -21,7 +21,10 @@ class App < Sinatra::Base
     # Expose app to components.
     AppHelper::set_app(self)
 
-    # Setup database.
+    # Expose session to components.
+    AppHelper::set_session(session)
+
+    # Setup and expose database.
     AppHelper::load_db(@@root)
 
   end
@@ -29,6 +32,8 @@ class App < Sinatra::Base
   ##
   # CONFIGURATION
   ##
+
+  enable :sessions
 
   # Configure reloader.
   configure :development do
@@ -53,13 +58,23 @@ class App < Sinatra::Base
 
   end
 
+  # Add ticket to cart.
+  post '/tickets/:ticket_id/add' do
+
+    ticket_id = params[:ticket_id]
+
+    cart = Cart.new(params)
+    cart.add(ticket_id)
+
+    redirect to("/tickets/#{ticket_id}")
+
+  end
+
   # List tickets in cart.
   get '/cart' do
     cart = Cart.new(params)
     cart.render()
   end
-
-  # Add products to a Shopping Cart.
 
   # Apply promotional discounts.
 

@@ -8,6 +8,11 @@ module AppHelper
     @@app ||= app
   end
 
+  # Expose session to components.
+  def self.set_session(session)
+    @@session ||= session
+  end
+
   def self.load_db(root)
     @@db ||= begin
 
