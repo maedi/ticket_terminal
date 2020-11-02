@@ -89,10 +89,6 @@ class App < Sinatra::Base
 
   end
 
-  # Apply promotional discounts.
-
-  # Calculate and display the total cost.
-
   ##
   # SERVER
   ##
