@@ -16,10 +16,8 @@ RSpec.describe Tickets do
   end
 
   it "should show ticket in cart" do
-
     get '/tickets'
     expect(last_response.body).to include('<div class="total">')
-
   end
 
 end
