@@ -1,5 +1,7 @@
 class Discounter < Component
 
+  # TODO: Refactor discounter into a helper (not a component).
+
   def initialize(params)
     super
 
@@ -9,7 +11,7 @@ class Discounter < Component
   end
 
   ##
-  # Apply the largest discount possible to the amount.
+  # Apply the largest possible discount to the total.
   #
   # @param total [Integer] In cents.
   # @return [Integer] The amount to discount, which could be nothing.

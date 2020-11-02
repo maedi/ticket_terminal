@@ -50,9 +50,13 @@ class App < Sinatra::Base
   # Home.
   get ['/', '/tickets'] do
 
-    # List available tickets and cart.
+    # List available tickets.
     tickets = Tickets.new(params)
+
+    # List tickets in cart.
     cart = Cart.new(params)
+    cart.list_tickets(@@db[:tickets])
+    cart.apply_discount(params)
 
     return [
       tickets.render({tickets: @@db[:tickets]}),
@@ -85,6 +89,8 @@ class App < Sinatra::Base
   get '/cart' do
 
     cart = Cart.new(params)
+    cart.list_tickets(@@db[:tickets])
+    cart.apply_discount(params)
     cart.render()
 
   end

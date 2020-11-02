@@ -1,18 +1,22 @@
 require 'money'
 require 'monetize'
+require 'bigdecimal'
 
 # @see https://github.com/RubyMoney/money/issues/593
 I18n.enforce_available_locales = false
 # @see https://github.com/RubyMoney/money#localization
 Money.locale_backend = :i18n
+Money.rounding_mode = BigDecimal::ROUND_HALF_EVEN
 
 class Cart < Component
 
   def initialize(params)
     super
 
+    @state[:tickets] = []
     @state[:message] = nil
     @state[:discount_applied] = false
+    @state[:total] = 0
 
     # Get cart from session.
     unless @@session.key? "cart"
@@ -20,20 +24,25 @@ class Cart < Component
     end
     @cart = @@session["cart"]
 
-    # Get tickets in cart and their total.
-    @state[:total] = 0
-    @state[:tickets] = []
+  end
+
+  # List tickets in cart and their total.
+  def list_tickets(tickets)
 
     @cart.each do |ticket_id|
       ticket_id = ticket_id.to_i
-      if @@db[:tickets].key? ticket_id
+      if tickets.key? ticket_id
 
-        ticket = @@db[:tickets][ticket_id]
+        ticket = tickets[ticket_id]
         @state[:total] += Monetize.parse(ticket[:price]).cents
         @state[:tickets] << ticket
 
       end
     end
+
+  end
+
+  def apply_discount(params)
 
     # Determine discount.
     discounter = Discounter.new(params)
