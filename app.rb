@@ -45,58 +45,6 @@ class App < Sinatra::Base
   end
 
   ##
-  # ROUTES
-  ##
-
-  # Home.
-  get ['/', '/tickets'] do
-
-    # List available tickets.
-    tickets = Tickets.new(params)
-
-    # List tickets in cart.
-    cart = Cart.new(params)
-    cart.build_tickets(@@db[:tickets])
-    cart.apply_discount()
-
-    return [
-      tickets.render({tickets: @@db[:tickets]}),
-      cart.render()
-    ]
-
-  end
-
-  # Show ticket.
-  get '/tickets/:ticket_id' do
-
-    ticket = Ticket.new(params)
-    ticket.render()
-
-  end
-
-  # Add ticket to cart.
-  post '/tickets/:ticket_id/add' do
-
-    ticket_id = params[:ticket_id]
-
-    cart = Cart.new(params)
-    cart.add(ticket_id)
-
-    redirect to("/")
-
-  end
-
-  # List tickets in cart.
-  get '/cart' do
-
-    cart = Cart.new(params)
-    cart.build_tickets(@@db[:tickets])
-    cart.apply_discount()
-    cart.render()
-
-  end
-
-  ##
   # SERVER
   ##
 

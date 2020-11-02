@@ -4,7 +4,11 @@
 # Loads components into application.
 ################################################################################
 
-paths = ["components/*.rb", "helpers/*.rb"].map(&:freeze).freeze
+paths = [
+  "helpers/*.rb",
+  "controllers/*.rb",
+  "components/*.rb"
+].map(&:freeze).freeze
 
 paths.each do |path|
  Dir[File.join(App.root, path)].each do |file|
