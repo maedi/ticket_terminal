@@ -42,10 +42,10 @@ class Cart < Component
 
   end
 
-  def apply_discount(params)
+  def apply_discount()
 
     # Determine discount.
-    discounter = Discounter.new(params)
+    discounter = Discounter.new()
     discount = discounter.get_discount(@state[:total])
 
     # Apply discount.

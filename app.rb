@@ -56,7 +56,7 @@ class App < Sinatra::Base
     # List tickets in cart.
     cart = Cart.new(params)
     cart.list_tickets(@@db[:tickets])
-    cart.apply_discount(params)
+    cart.apply_discount()
 
     return [
       tickets.render({tickets: @@db[:tickets]}),
@@ -90,7 +90,7 @@ class App < Sinatra::Base
 
     cart = Cart.new(params)
     cart.list_tickets(@@db[:tickets])
-    cart.apply_discount(params)
+    cart.apply_discount()
     cart.render()
 
   end

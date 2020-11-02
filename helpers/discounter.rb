@@ -1,9 +1,10 @@
-class Discounter < Component
+require_relative '../helpers/app_helper.rb'
 
-  # TODO: Refactor discounter into a helper (not a component).
+class Discounter
 
-  def initialize(params)
-    super
+  include AppHelper
+
+  def initialize()
 
     discounts_file = File.read(File.join(@@root, 'data/discounts.json'))
     @discounts = JSON.parse(discounts_file, {:symbolize_names => true})
