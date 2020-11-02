@@ -11,6 +11,8 @@ Money.default_currency = "USD"
 
 class Cart < Component
 
+  attr_accessor :items
+
   def initialize(params)
     super
 
@@ -23,14 +25,14 @@ class Cart < Component
     unless @@session.key? "cart"
       @@session = { "cart" => [] }
     end
-    @cart = @@session["cart"]
+    @items = @@session["cart"]
 
   end
 
   # List tickets in cart and their total.
   def list_tickets(tickets)
 
-    @cart.each do |ticket_id|
+    @items.each do |ticket_id|
       ticket_id = ticket_id.to_i
       if tickets.key? ticket_id
 
@@ -74,13 +76,13 @@ class Cart < Component
 
   # Add a ticket to the cart.
   def add(ticket_id)
-    @cart << ticket_id
+    @items << ticket_id
   end
 
   def render()
 
     # List and show total of tickets in cart.
-    unless @cart.empty?
+    unless @items.empty?
       return @@app.erb :cart, :layout => nil, :locals => {
         :tickets => @state[:tickets],
         :message => @state[:message],
