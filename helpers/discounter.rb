@@ -22,7 +22,7 @@ class Discounter
     largest_discount = 0.00
 
     @discounts.each do |discount|
-      threshold = Money.new(discount[:threshold] * 100, "USD").cents
+      threshold = Money.new(discount[:threshold] * 100).cents
       # TODO: Add "discount[:discount] > largest_discount" in case array out of order.
       if total > threshold
         largest_discount = discount[:discount]

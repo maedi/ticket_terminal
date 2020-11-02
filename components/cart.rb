@@ -7,6 +7,7 @@ I18n.enforce_available_locales = false
 # @see https://github.com/RubyMoney/money#localization
 Money.locale_backend = :i18n
 Money.rounding_mode = BigDecimal::ROUND_HALF_EVEN
+Money.default_currency = "USD"
 
 class Cart < Component
 
@@ -56,7 +57,7 @@ class Cart < Component
       # Add discounted prices to tickets.
       @state[:tickets].each do |ticket|
         new_price = Monetize.parse(ticket[:price]).cents * (1 - discount)
-        ticket[:discount_price] = Money.new(new_price, "USD").format
+        ticket[:discount_price] = Money.new(new_price).format
       end
 
       # Discount the total.
@@ -84,7 +85,7 @@ class Cart < Component
         :tickets => @state[:tickets],
         :message => @state[:message],
         :discount_applied => @state[:discount_applied],
-        :total => Money.new(@state[:total], "USD").format
+        :total => Money.new(@state[:total]).format
       }
     end
 
