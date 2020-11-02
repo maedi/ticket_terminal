@@ -30,7 +30,7 @@ class Cart < Component
   end
 
   # List tickets in cart and their total.
-  def list_tickets(tickets)
+  def build_tickets(tickets)
 
     @items.each do |ticket_id|
       ticket_id = ticket_id.to_i
@@ -77,6 +77,10 @@ class Cart < Component
   # Add a ticket to the cart.
   def add(ticket_id)
     @items << ticket_id
+  end
+
+  def total()
+    @state[:total]
   end
 
   def render()
