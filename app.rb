@@ -19,6 +19,7 @@ class App < Sinatra::Base
   # Expose root directory to components.
   @@root = root
 
+  # On request.
   before do
 
     # Expose app to components.

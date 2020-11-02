@@ -3,13 +3,13 @@ ENV['APP_ENV'] = 'test'
 require 'rspec'
 require_relative '../app'
 
-RSpec.describe 'Terminal Ticket' do
+RSpec.describe App do
 
   def app
     App
   end
 
-  it "lists tickets" do
+  it "should list tickets" do
     get '/'
     expect(last_response).to be_ok
     expect(last_response.body).to match(/<li>/)
