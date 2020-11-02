@@ -3,7 +3,7 @@ ENV['APP_ENV'] = 'test'
 require 'rspec'
 require_relative '../app'
 
-RSpec.describe 'Terminal Ticket' do
+RSpec.describe 'Ticket' do
 
   def app
     App
