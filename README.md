@@ -42,7 +42,11 @@ In summary, this was an experimental build marrying different paradigms, but res
 
 ## Architecture
 
-* Sinatra for light-weight controllers/routes
+* Sinatra for routing to light-weight Controllers
 * Components for entities that `initialize()` and `render()` themselves
 * Components use writable `@state` and read-only `props` just like React
 * Sinatra does the final rendering of components into templates/HTML
+
+## Learnings
+
+I wouldn't use Sinatra if I could do this project again. It felt like I was fighting the framework rather than working with it. Using an `AppHelper` module as well as accessing the `App` class directly inside the controllers felt hacky. But it was a good learning experience into how Sinatra works.
