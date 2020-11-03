@@ -4,7 +4,18 @@ require 'sass/plugin/rack'
 
 class App < Sinatra::Base
 
+  ##
+  # CONFIGURATION
+  ##
+
   use Sass::Plugin::Rack
+
+  enable :sessions
+
+  # Configure reloader.
+  configure :development do
+    register Sinatra::Reloader
+  end
 
   ##
   # SETUP
@@ -12,7 +23,7 @@ class App < Sinatra::Base
 
   root = Dir.pwd
 
-  # Load components and helpers.
+  # Load components, controllers and helpers.
   require File.join(root, '/autoloader.rb')
   include AppHelper
 
@@ -31,17 +42,6 @@ class App < Sinatra::Base
     # Setup and expose database.
     AppHelper::load_db(@@root)
 
-  end
-
-  ##
-  # CONFIGURATION
-  ##
-
-  enable :sessions
-
-  # Configure reloader.
-  configure :development do
-    register Sinatra::Reloader
   end
 
   ##

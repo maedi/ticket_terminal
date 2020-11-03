@@ -1,12 +1,7 @@
-require 'sinatra/base'
-require 'sinatra/reloader'
-
-class CartController < Sinatra::Base
-
-  include AppHelper
+class CartController < Controller
 
   # Add ticket to cart.
-  post '/tickets/:ticket_id/add' do
+  App.post '/tickets/:ticket_id/add' do
 
     ticket_id = params[:ticket_id]
 
@@ -18,7 +13,7 @@ class CartController < Sinatra::Base
   end
 
   # List tickets in cart.
-  get '/cart' do
+  App.get '/cart' do
 
     cart = Cart.new(params)
     cart.build_tickets(@@db[:tickets])

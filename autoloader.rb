@@ -6,7 +6,9 @@
 
 paths = [
   "helpers/*.rb",
+  "controllers/controller.rb",
   "controllers/*.rb",
+  "components/component.rb",
   "components/*.rb"
 ].map(&:freeze).freeze
 

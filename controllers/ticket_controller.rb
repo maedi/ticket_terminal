@@ -1,12 +1,7 @@
-require 'sinatra/base'
-require 'sinatra/reloader'
-
-class TicketController < Sinatra::Base
-
-  include AppHelper
+class TicketController < Controller
 
   # Home.
-  get ['/', '/tickets'] do
+  App.get ['/', '/tickets'] do
 
     # List available tickets.
     tickets = Tickets.new(params)
@@ -24,7 +19,7 @@ class TicketController < Sinatra::Base
   end
 
   # Show ticket.
-  get '/tickets/:ticket_id' do
+  App.get '/tickets/:ticket_id' do
 
     ticket = Ticket.new(params)
     ticket.render()
