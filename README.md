@@ -42,7 +42,7 @@ In summary, this was an experimental build marrying different paradigms, but res
 
 ## Architecture
 
-* Sinatra for routing to light-weight Controllers
+* Sinatra for routing/light-weight controllers
 * Components for entities that `initialize()` and `render()` themselves
 * Components use writable `@state` and read-only `props` just like React
 * Sinatra does the final rendering of components into templates/HTML
