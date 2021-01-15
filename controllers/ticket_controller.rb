@@ -1,4 +1,4 @@
-class TicketController < Controller
+class TicketController < AppController
 
   # Home.
   App.get ['/', '/tickets'] do

@@ -1,4 +1,4 @@
-class CartController < Controller
+class CartController < AppController
 
   # Add ticket to cart.
   App.post '/tickets/:ticket_id/add' do
