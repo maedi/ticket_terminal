@@ -1,8 +1,12 @@
+require 'reflekt'
 require_relative '../helpers/app_helper.rb'
 
 class Component
 
+  prepend Reflekt
   include AppHelper
+
+  reflekt_skip :render
 
   ##
   # All components have state and params.

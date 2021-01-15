@@ -11,6 +11,8 @@ Money.default_currency = "USD"
 
 class Cart < Component
 
+  reflekt_skip :add
+
   attr_accessor :items
 
   def initialize(params)

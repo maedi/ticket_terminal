@@ -12,6 +12,7 @@ gem "monetize"
 gem "sass"
 
 group :test do
+  gem "reflekt"
   gem "rspec"
   gem "rack-test"
 end

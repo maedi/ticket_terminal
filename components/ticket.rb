@@ -14,12 +14,10 @@ class Ticket < Component
   end
 
   def render()
-
     @@app.erb :ticket, :locals => {
       :ticket_id => @state[:ticket_id],
       :ticket => @state[:ticket]
     }
-
   end
 
 end
